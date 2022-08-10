@@ -1,11 +1,9 @@
 <template>
-  Hello
+  <the-header />
 </template>
 
-<script>
-export default {
-  name: "HomePage"
-}
+<script setup>
+  import TheHeader from "../components/TheHeader.vue";
 </script>
 
 <style scoped>

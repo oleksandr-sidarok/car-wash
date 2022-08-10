@@ -7,6 +7,21 @@ const routes = [
         path: "/",
         name: "Home",
         component: HomePage
+    },
+    {
+        path: "/booking",
+        name: "Booking",
+        component: HomePage
+    },
+    {
+        path: "/about-us",
+        name: "AboutUs",
+        component: HomePage
+    },
+    {
+        path: "/car-rental",
+        name: "CarRental",
+        component: HomePage
     }
 ]
 
