@@ -66,7 +66,17 @@
 
 <style scoped>
   .header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
     padding: 10px 0;
+    z-index: 10;
+  }
+
+  .fixed {
+    position: fixed;
     background: #1a1a1a;
   }
 

@@ -1,9 +1,11 @@
 <template>
-  <the-header />
+  <section>
+    <the-intro />
+  </section>
 </template>
 
 <script setup>
-  import TheHeader from "../components/TheHeader.vue";
+import TheIntro from "../components/TheIntro.vue";
 </script>
 
 <style scoped>
