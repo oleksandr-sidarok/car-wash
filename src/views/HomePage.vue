@@ -25,6 +25,28 @@
       </div>
     </div>
   </section>
+  <section class="about-us">
+    <div class="container">
+      <div class="inner">
+        <div class="image">
+          <img width="340" height="320" src="../assets/img/founder.png" alt="founder Luka Lojk">
+        </div>
+        <div class="content">
+          <h2>Who We Are</h2>
+          <div class="text">
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and scrambled it to make a type specimen book
+            </p>
+          </div>
+          <blockquote class="quote">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -34,7 +56,7 @@ import AppButton from "../components/UI/AppButton.vue"
 
 <style scoped>
 .professional-washing {
-  padding: 90px 0;
+  padding: 90px 0 40px;
   background: var(--background-color);
 }
 
@@ -52,7 +74,7 @@ import AppButton from "../components/UI/AppButton.vue"
   width: 45%;
 }
 
-.image img {
+.professional-washing img {
   width: 100%;
   height: auto;
 }
@@ -61,5 +83,36 @@ import AppButton from "../components/UI/AppButton.vue"
   display: flex;
   gap: 20px;
   margin-top: 50px;
+}
+
+.about-us {
+  padding: 40px 0;
+  background: var(--background-color);
+}
+
+.about-us .inner {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 60px;
+}
+
+.quote {
+  position: relative;
+  color: white;
+  margin-top: 30px;
+  margin-left: 24px;
+  z-index: 3;
+}
+
+.quote::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: -24px;
+  width: 46px;
+  height: 39px;
+  background-image: url("../assets/icons/q.png");
+  z-index: -1;
 }
 </style>
