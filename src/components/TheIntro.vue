@@ -20,6 +20,7 @@
         <slot class="button">
           <app-button style="width: 300px">Book Now</app-button>
         </slot>
+        <social-widget class="social-widget" />
       </div>
     </div>
   </div>
@@ -27,6 +28,7 @@
 
 <script setup>
 import AppButton from "../components/UI/AppButton.vue"
+import SocialWidget from "../components/SocialWidget.vue"
 </script>
 
 <style scoped>
@@ -63,6 +65,10 @@ import AppButton from "../components/UI/AppButton.vue"
   z-index: -1;
 }
 
+.intro-inner {
+  position: relative;
+}
+
 .title {
   font-size: 80px;
   line-height: 1;
@@ -89,4 +95,10 @@ import AppButton from "../components/UI/AppButton.vue"
   margin-bottom: 50px;
 }
 
+.social-widget {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
 </style>
