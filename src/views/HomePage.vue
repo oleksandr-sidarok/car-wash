@@ -47,11 +47,48 @@
       </div>
     </div>
   </section>
+  <section class="our-services">
+    <div class="container">
+      <div class="inner">
+        <h2>Our Washing Services</h2>
+        <cards-slider :items="ourServices" />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
 import TheIntro from "../components/TheIntro.vue";
-import AppButton from "../components/UI/AppButton.vue"
+import AppButton from "../components/UI/AppButton.vue";
+import CardsSlider from "../components/CardsSlider.vue";
+
+let ourServices = [
+  {
+    title: "Contactless Washing",
+    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    icon: new URL('../assets/icons/u_snowflake.svg', import.meta.url)
+  },
+  {
+    title: "Safety Materials",
+    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    icon: new URL('../assets/icons/u_wind-moon.svg', import.meta.url)
+  },
+  {
+    title: "Contactless Washing",
+    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    icon: new URL('../assets/icons/u_wind-sun.svg', import.meta.url)
+  },
+  {
+    title: "Contactless Washing",
+    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    icon: new URL('../assets/icons/u_wind.svg', import.meta.url)
+  },
+  {
+    title: "Contactless Washing",
+    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    icon: new URL('../assets/icons/u_wind.svg', import.meta.url)
+  },
+]
 </script>
 
 <style scoped>
@@ -114,5 +151,35 @@ import AppButton from "../components/UI/AppButton.vue"
   height: 39px;
   background-image: url("../assets/icons/q.png");
   z-index: -1;
+}
+
+.our-services {
+  padding: 80px 0;
+}
+
+.our-services .inner {
+  position: relative;
+}
+
+.our-services .inner::before, .our-services .inner::after {
+  content: "";
+  width: 100%;
+  height: 130%;
+  position: absolute;
+  top: -30px;
+  right: -100px;
+  z-index: -1;
+}
+
+.our-services .inner::before {
+  background-image: url("../assets/img/back-car.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  opacity: 0.7;
+}
+
+.our-services .inner::after {
+  background: linear-gradient(90deg, var(--background-color) 46%, transparent 100%);
 }
 </style>
