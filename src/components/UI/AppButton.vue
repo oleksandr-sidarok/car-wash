@@ -9,6 +9,7 @@
 
 <script setup>
 import {computed} from "vue";
+import {defineProps} from "vue";
 
 const props = defineProps({
   type: {
@@ -42,8 +43,9 @@ let linkType = computed(() => {
     color: white;
   }
 
-  .outline {
+  .outlined {
     background: transparent;
     border: 1px solid #ffffff;
+    opacity: 0.8;
   }
 </style>

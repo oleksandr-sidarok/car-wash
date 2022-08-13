@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <swiper
-        ref="swiperRef"
         :slides-per-view="4"
         :space-between="30"
         :modules="swiperModules"
@@ -40,6 +39,7 @@ const swiperModules = [Navigation]
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
+import {defineProps} from "vue";
 
 const props = defineProps({
   items: {

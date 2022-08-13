@@ -55,12 +55,76 @@
       </div>
     </div>
   </section>
+  <section class="cleaning-services">
+    <div class="container">
+      <div class="inner">
+        <div class="content">
+          <!--    Evan Yu, I'm sorry      -->
+          <swiper
+              :slides-per-view="1"
+              :modules="swiperModules"
+              :navigation="{nextEl: '#next', prevEl: '#prev'}"
+              @swiper="cleaningSwiper = $event"
+              @reachBeginning="$forceUpdate"
+              @reachEnd="$forceUpdate"
+          >
+            <swiper-slide>
+              <h2 @click="">Dry Cleaning Any Dirt Inside The Car.</h2>
+              <div class="text">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                  Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                </p>
+                <p>
+                  mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                  massa quis enim.
+                </p>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <h2>Dry Cleaning Any Dirt Inside The Car.</h2>
+              <div class="text">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                  Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                </p>
+                <p>
+                  mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                  massa quis enim.
+                </p>
+              </div>
+            </swiper-slide>
+          </swiper>
+          <div class="buttons-wrapper">
+            <app-button decoration="outlined">View More</app-button>
+            <div class="cleaning-services-nav">
+              <app-button id="prev" :decoration="cleaningSwiper?.isBeginning ? 'outlined' : 'fill'">Prev</app-button>
+              <app-button id="next" :decoration="cleaningSwiper?.isEnd ? 'outlined' : 'fill'">Next</app-button>
+            </div>
+          </div>
+        </div>
+        <div class="image">
+          <img src="../assets/img/inside-car.jpg" alt="inside car" width="640" height="430">
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
 import TheIntro from "../components/TheIntro.vue";
 import AppButton from "../components/UI/AppButton.vue";
 import CardsSlider from "../components/CardsSlider.vue";
+
+import {Navigation} from "swiper"
+import {Swiper, SwiperSlide, useSwiper} from "swiper/vue";
+const swiperModules = [Navigation]
+import "swiper/css";
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
+import {ref} from "vue";
+
+let cleaningSwiper = ref({})
 
 let ourServices = [
   {
@@ -70,23 +134,23 @@ let ourServices = [
   },
   {
     title: "Safety Materials",
-    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    description: "Cras aliquam tristique metus, eu gravida diam vestibulum gravida.",
     icon: new URL('../assets/icons/u_wind-moon.svg', import.meta.url)
   },
   {
-    title: "Contactless Washing",
-    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    title: "Modern Equipment",
+    description: "Fusce maximus molestie nisl, ut dapibus libero vestibulum aliquam.",
     icon: new URL('../assets/icons/u_wind-sun.svg', import.meta.url)
   },
   {
-    title: "Contactless Washing",
-    description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
+    title: "Extensive Cleaning",
+    description: "Sestibulum non dolor sit amet mi moles tincidunt vel non velit.",
     icon: new URL('../assets/icons/u_wind.svg', import.meta.url)
   },
   {
     title: "Contactless Washing",
     description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
-    icon: new URL('../assets/icons/u_wind.svg', import.meta.url)
+    icon: new URL('../assets/icons/u_wind-moon.svg', import.meta.url)
   },
 ]
 </script>
@@ -181,5 +245,33 @@ let ourServices = [
 
 .our-services .inner::after {
   background: linear-gradient(90deg, var(--background-color) 46%, transparent 100%);
+}
+
+.cleaning-services {
+  padding: 50px;
+}
+
+.cleaning-services .inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.cleaning-services .content {
+  width: 42%;
+}
+
+.cleaning-services img {
+  border-radius: 10px;
+}
+
+.cleaning-services .buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cleaning-services-nav {
+  display: flex;
+  gap: 10px;
 }
 </style>
