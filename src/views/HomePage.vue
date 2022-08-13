@@ -51,7 +51,7 @@
     <div class="container">
       <div class="inner">
         <h2>Our Washing Services</h2>
-        <cards-slider :items="ourServices" />
+        <cards-slider :items="ourServices" content="center" :stars="true" />
       </div>
     </div>
   </section>
@@ -109,6 +109,11 @@
       </div>
     </div>
   </section>
+  <section class="our-benefits">
+    <div class="container">
+      <CardsSlider :items="ourBenefits" :slides-per-view="3" />
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -152,6 +157,29 @@ let ourServices = [
     description: "Vestibulum tortor risus, rutrum at congue sed ultricies finibus.",
     icon: new URL('../assets/icons/u_wind-moon.svg', import.meta.url)
   },
+]
+
+let ourBenefits = [
+  {
+    title: "Natural Cleaners",
+    description: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    icon: new URL('../assets/icons/speedometer.svg', import.meta.url)
+  },
+  {
+    title: "Heightened care",
+    description: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    icon: new URL('../assets/icons/speedometer.svg', import.meta.url)
+  },
+  {
+    title: "Aromatization",
+    description: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    icon: new URL('../assets/icons/speedometer.svg', import.meta.url)
+  },
+  {
+    title: "Natural Cleaners",
+    description: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    icon: new URL('../assets/icons/speedometer.svg', import.meta.url)
+  }
 ]
 </script>
 
@@ -248,7 +276,7 @@ let ourServices = [
 }
 
 .cleaning-services {
-  padding: 50px;
+  padding: 70px;
 }
 
 .cleaning-services .inner {
@@ -273,5 +301,18 @@ let ourServices = [
 .cleaning-services-nav {
   display: flex;
   gap: 10px;
+}
+
+.our-benefits {
+  padding: 70px 0;
+}
+
+.our-benefits :deep(.card) {
+  padding: 30px 45px;
+}
+
+.our-benefits :deep(.icon) {
+  height: 64px;
+  width: 64px;
 }
 </style>

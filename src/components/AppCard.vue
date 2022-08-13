@@ -5,7 +5,7 @@
     <div class="description">
       <p>{{props.description}}</p>
     </div>
-    <app-stars :value="4" />
+    <app-stars v-if="props.stars" :value="4" />
   </div>
 </template>
 
@@ -28,6 +28,10 @@ const props = defineProps({
   content: {
     type: String,
     default: "start"
+  },
+  stars: {
+    type: Boolean,
+    default: false
   }
 })
 </script>

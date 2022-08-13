@@ -1,20 +1,17 @@
 <template>
   <div class="wrapper">
     <swiper
-        :slides-per-view="4"
-        :space-between="30"
+        :slides-per-view="props.slidesPerView"
         :modules="swiperModules"
-        :navigation="{
-              nextEl: '.next',
-              prevEl: '.prev',
-            }"
+        :navigation="{nextEl: '.next', prevEl: '.prev'}"
     >
       <swiper-slide v-for="item in items">
         <AppCard
             :title="item.title"
             :description="item.description"
-            content="center"
+            :content="props.content"
             :icon="item.icon"
+            :stars="props.stars"
         />
       </swiper-slide>
     </swiper>
@@ -45,6 +42,18 @@ const props = defineProps({
   items: {
     type: [Array, Set],
     required: true
+  },
+  content: {
+    type: String,
+    required: false
+  },
+  stars: {
+    type: Boolean,
+    default: false
+  },
+  slidesPerView: {
+    type: Number,
+    default: 4
   }
 })
 </script>
