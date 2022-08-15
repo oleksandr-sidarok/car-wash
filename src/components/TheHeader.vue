@@ -77,7 +77,7 @@
 
   .fixed {
     position: fixed;
-    background: #1a1a1a;
+    background: black;
   }
 
   .header-inner {

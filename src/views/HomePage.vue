@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="intro">
     <the-intro />
   </section>
   <section class="professional-washing">
@@ -287,6 +287,10 @@ let appeal = reactive({
 <style scoped>
 section {
   padding: 80px 0;
+}
+
+.intro {
+  padding-top: 0;
 }
 
 .professional-washing {

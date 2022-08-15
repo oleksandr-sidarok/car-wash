@@ -34,8 +34,7 @@ import SocialWidget from "../components/SocialWidget.vue"
 <style scoped>
 .intro {
   position: relative;
-  padding-top: 90px;
-  height: 800px;
+  height: 100vh;
   display: flex;
   align-items: center;
   z-index: 3;
@@ -50,6 +49,7 @@ import SocialWidget from "../components/SocialWidget.vue"
   width: 100%;
   height: 100%;
   background-image: url("../assets/img/intro-bg.jpg");
+  background-size: cover;
   z-index: -1;
 }
 
