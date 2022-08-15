@@ -46,5 +46,10 @@ let social_list = [
 
   .social-icon {
     display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .social-icon:hover {
+    transform: scale(130%);
   }
 </style>
