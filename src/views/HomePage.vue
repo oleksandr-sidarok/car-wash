@@ -133,21 +133,64 @@
       </div>
     </div>
   </section>
+  <section class="contact-us">
+    <div class="container">
+      <div class="inner">
+        <div class="map">
+          <img src="../assets/img/map.png" alt="Map">
+        </div>
+        <div class="content">
+          <h2>Apply for a car wash.</h2>
+          <form class="contact-form" @submit.prevent>
+            <app-input
+                v-model="appeal.name"
+                placeholder="Full Name"
+            />
+            <app-input
+                v-model="appeal.phone"
+                placeholder="Phone No."
+            />
+            <app-select
+                :options="['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix ']"
+                placeholder="Select Address"
+                v-model="appeal.address"
+            />
+            <app-select
+                :options="['10:00', '12:00', '14:00', '16:00']"
+                placeholder="Select Time"
+            />
+            <app-textarea
+                class="contact-text"
+                placeholder="Message"
+                v-model="appeal.text"
+            />
+            <app-button class="contact-button" type="submit">
+              Book Appointment
+            </app-button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
 import TheIntro from "../components/TheIntro.vue";
 import AppButton from "../components/UI/AppButton.vue";
 import CardsSlider from "../components/CardsSlider.vue";
-import AppReview from "../components/AppReview.vue"
+import AppReview from "../components/AppReview.vue";
+import AppInput from "../components/UI/AppInput.vue";
+import AppSelect from "../components/UI/AppSelect.vue";
+import AppTextarea from "../components/UI/AppTextarea.vue";
 
 import {Navigation} from "swiper"
-import {Swiper, SwiperSlide, useSwiper} from "swiper/vue";
-const swiperModules = [Navigation]
+import {Swiper, SwiperSlide} from "swiper/vue";
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
-import {ref} from "vue";
+import {reactive, ref} from "vue";
+
+const swiperModules = [Navigation]
 
 let cleaningSwiper = ref({})
 
@@ -231,9 +274,21 @@ let reviews = [
     }
   },
 ]
+
+let appeal = reactive({
+  name: "",
+  phone: "",
+  address: "",
+  time: "",
+  text: ""
+})
 </script>
 
 <style scoped>
+section {
+  padding: 80px 0;
+}
+
 .professional-washing {
   padding: 90px 0 40px;
   background: var(--background-color);
@@ -295,10 +350,6 @@ let reviews = [
   z-index: -1;
 }
 
-.our-services {
-  padding: 80px 0;
-}
-
 .our-services .inner {
   position: relative;
 }
@@ -325,10 +376,6 @@ let reviews = [
   background: linear-gradient(90deg, var(--background-color) 46%, transparent 100%);
 }
 
-.cleaning-services {
-  padding: 70px;
-}
-
 .cleaning-services .inner {
   display: flex;
   justify-content: space-between;
@@ -353,10 +400,6 @@ let reviews = [
   gap: 10px;
 }
 
-.our-benefits {
-  padding: 70px 0;
-}
-
 .our-benefits :deep(.card) {
   padding: 30px 45px;
 }
@@ -366,11 +409,31 @@ let reviews = [
   width: 64px;
 }
 
-.reviews {
-  padding: 70px 0;
-}
-
 .reviews .title {
   margin-bottom: 80px;
+}
+
+.contact-us .inner{
+  display: flex;
+  gap: 100px;
+}
+
+.contact-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  gap: 20px;
+}
+
+.contact-form > * {
+  flex-grow: 1;
+}
+
+.contact-text {
+  width: 100%;
+}
+
+.contact-button {
+  flex-grow: 0;
 }
 </style>

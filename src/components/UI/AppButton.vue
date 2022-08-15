@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="props.decoration" v-if="props.type === 'button'" :type="props.type">
+  <button class="button" :class="props.decoration" v-if="props.type === 'button' || props.type === 'submit'" :type="props.type">
     <slot />
   </button>
   <a :href="`${linkType}${link}`" class="button" v-else>
