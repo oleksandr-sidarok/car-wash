@@ -114,12 +114,32 @@
       <CardsSlider :items="ourBenefits" :slides-per-view="3" />
     </div>
   </section>
+  <section class="reviews">
+    <div class="container">
+      <div class="inner">
+        <h2 class="title">What our clients say</h2>
+        <!--    There should be a slider here    -->
+        <swiper
+          :slides-per-view="2.5"
+          :space-between="90"
+        >
+          <swiper-slide v-for="item in reviews">
+            <app-review :user="item.user" :date="item.date">
+              <template #title>{{item.title}}</template>
+              <template #text>{{item.text}}</template>
+            </app-review>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
 import TheIntro from "../components/TheIntro.vue";
 import AppButton from "../components/UI/AppButton.vue";
 import CardsSlider from "../components/CardsSlider.vue";
+import AppReview from "../components/AppReview.vue"
 
 import {Navigation} from "swiper"
 import {Swiper, SwiperSlide, useSwiper} from "swiper/vue";
@@ -180,6 +200,36 @@ let ourBenefits = [
     description: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
     icon: new URL('../assets/icons/speedometer.svg', import.meta.url)
   }
+]
+
+let reviews = [
+  {
+    title: "Incredible Experience",
+    text: "We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+    date: "12/10/13",
+    user: {
+      name: "Esther Howard",
+      image: new URL('../assets/img/user_1.jpg', import.meta.url)
+    }
+  },
+  {
+    title: "Dependable, Responsive, Professional Partner",
+    text: "Fermin Apps has collaborated with Landify team for several projects such as Photo Sharing Apps and Custom Social Networking Apps. The experience has been pleasant, professional and exceeding our expectations. The team is always thinking beyond the current tasks & helps us formulate a vision and possibilities for future.",
+    date: "10/28/12",
+    user: {
+      name: "Ralph Edwards",
+      image: new URL('../assets/img/user_2.jpg', import.meta.url)
+    }
+  },
+  {
+    title: "Dependable, Responsive, Professional Partner",
+    text: "Fermin Apps has collaborated with Landify team for several projects such as Photo Sharing Apps and Custom Social Networking Apps. The experience has been pleasant, professional and exceeding our expectations. The team is always thinking beyond the current tasks & helps us formulate a vision and possibilities for future.",
+    date: "7/27/13",
+    user: {
+      name: "Guy Hawkins",
+      image: new URL('../assets/img/user_3.jpg', import.meta.url)
+    }
+  },
 ]
 </script>
 
@@ -314,5 +364,13 @@ let ourBenefits = [
 .our-benefits :deep(.icon) {
   height: 64px;
   width: 64px;
+}
+
+.reviews {
+  padding: 70px 0;
+}
+
+.reviews .title {
+  margin-bottom: 80px;
 }
 </style>

@@ -10,6 +10,7 @@
 </template>
 
 <script setup>
+import {defineProps} from "vue";
 import AppStars from "./AppStars.vue"
 
 const props = defineProps({
