@@ -51,7 +51,7 @@
     <div class="container">
       <div class="inner">
         <h2>Our Washing Services</h2>
-        <cards-slider :items="ourServices" content="center" :stars="true" />
+        <cards-slider :items="ourServices" content="center" :stars="true" :breakpoints="washingSliderBreakpoints" />
       </div>
     </div>
   </section>
@@ -188,9 +188,34 @@ import {Swiper, SwiperSlide} from "swiper/vue";
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
-import {reactive, ref} from "vue";
+import {reactive, ref, watch} from "vue";
 
 const swiperModules = [Navigation]
+
+// Page Size
+let innerWidth = ref(window.innerWidth)
+
+let washingSliderBreakpoints = {
+  320: {
+    slidesPerView: 1,
+    spaceBetween: 20
+  },
+  576: {
+    slidesPerView: 2,
+    spaceBetween: 20
+  },
+  768: {
+    slidesPerView: 2,
+    spaceBetween: 40
+  },
+  992: {
+    slidesPerView: 3
+  },
+  1200: {
+    slidesPerView: 4,
+    spaceBetween: 40
+  }
+}
 
 let cleaningSwiper = ref({})
 

@@ -4,9 +4,11 @@
         :slides-per-view="props.slidesPerView"
         :modules="swiperModules"
         :navigation="{nextEl: '.next', prevEl: '.prev'}"
+        :breakpoints="props.breakpoints"
     >
       <swiper-slide v-for="item in items">
         <AppCard
+            class="card"
             :title="item.title"
             :description="item.description"
             :content="props.content"
@@ -54,6 +56,10 @@ const props = defineProps({
   slidesPerView: {
     type: Number,
     default: 4
+  },
+  breakpoints: {
+    type: Object,
+    default: {}
   }
 })
 </script>
@@ -76,6 +82,10 @@ const props = defineProps({
 
 .next {
   right: -50px;
+}
+
+.card {
+  margin: 0 auto;
 }
 
 :deep(.swiper-button-disabled) {
