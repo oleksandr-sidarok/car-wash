@@ -99,6 +99,10 @@ button:focus-visible {
     margin: 0;
 }
 
+.noscroll {
+    overflow: hidden;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
@@ -109,5 +113,11 @@ button:focus-visible {
     }
     button {
         background-color: #f9f9f9;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
     }
 }

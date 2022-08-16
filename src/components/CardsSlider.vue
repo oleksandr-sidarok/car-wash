@@ -38,7 +38,6 @@ const swiperModules = [Navigation]
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
-import {defineProps} from "vue";
 
 const props = defineProps({
   items: {

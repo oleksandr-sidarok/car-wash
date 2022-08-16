@@ -39,7 +39,7 @@ const props = defineProps({
 
 <style scoped>
 .card {
-  width: 250px;
+  min-width: 250px;
   padding: 30px 15px;
   background: linear-gradient(126.6deg, rgba(255, 255, 255, 0.12) 28.69%, rgba(255, 255, 255, 0) 100%);
   backdrop-filter: blur(140px);
@@ -50,8 +50,18 @@ const props = defineProps({
   text-align: v-bind('props.content');
 }
 
+@media (max-width: 576px) {
+  .card {
+    min-width: 200px;
+  }
+}
+
 .title {
   color: var(--accent-color);
+}
+
+.description {
+  height: 68px;
 }
 
 .icon {

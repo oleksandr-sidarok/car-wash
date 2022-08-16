@@ -111,7 +111,7 @@
   </section>
   <section class="our-benefits">
     <div class="container">
-      <CardsSlider :items="ourBenefits" :slides-per-view="3" />
+      <CardsSlider :items="ourBenefits" :slides-per-view="3" :breakpoints="benefitsSliderBreakpoints" />
     </div>
   </section>
   <section class="reviews">
@@ -192,16 +192,13 @@ import {reactive, ref, watch} from "vue";
 
 const swiperModules = [Navigation]
 
-// Page Size
-let innerWidth = ref(window.innerWidth)
-
 let washingSliderBreakpoints = {
-  320: {
+  0: {
     slidesPerView: 1,
     spaceBetween: 20
   },
-  576: {
-    slidesPerView: 2,
+  640: {
+    slidesPerView: 1.5,
     spaceBetween: 20
   },
   768: {
@@ -213,7 +210,33 @@ let washingSliderBreakpoints = {
   },
   1200: {
     slidesPerView: 4,
+    spaceBetween: 30
+  }
+}
+
+let benefitsSliderBreakpoints = {
+  0: {
+    slidesPerView: 1,
+    spaceBetween: 20
+  },
+  580: {
+    slidesPerView: 1.5,
+    spaceBetween: 20
+  },
+  768: {
+    slidesPerView: 2,
+    spaceBetween: 20
+  },
+  820: {
+    slidesPerView: 2.25,
     spaceBetween: 40
+  },
+  958: {
+    slidesPerView: 2.5
+  },
+  1200: {
+    slidesPerView: 3,
+    spaceBetween: 30
   }
 }
 
@@ -319,7 +342,7 @@ section {
 }
 
 .professional-washing {
-  padding: 90px 0 40px;
+  padding: 90px 0 80px;
   background: var(--background-color);
 }
 
@@ -346,11 +369,6 @@ section {
   display: flex;
   gap: 20px;
   margin-top: 50px;
-}
-
-.about-us {
-  padding: 40px 0;
-  background: var(--background-color);
 }
 
 .about-us .inner {
