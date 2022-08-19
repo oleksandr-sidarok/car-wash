@@ -101,4 +101,27 @@ import SocialWidget from "../components/SocialWidget.vue"
   right: 0;
   transform: translateY(-50%);
 }
+
+@media (max-width: 768px) {
+  .social-widget {
+    display: none;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+
+  .title span {
+    display: inline;
+    margin-right: 1rem;
+  }
+
+  .title .accent {
+    display: block;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
 </style>

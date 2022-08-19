@@ -74,9 +74,17 @@ import {computed, onMounted, ref} from "vue";
   let body
   let scrollY = ref(0)
   onMounted(() => {
+    body = document.body
+
     addEventListener("scroll", (e) => {
       scrollY.value = window.scrollY
     })
+
+    if(window.innerWidth > 992) {
+      burgerHandler(null, "full")
+    } else {
+      burgerHandler(null, "close")
+    }
 
     addEventListener("resize", (e) => {
       if(window.innerWidth > 992) {
@@ -85,8 +93,6 @@ import {computed, onMounted, ref} from "vue";
         burgerHandler(null, "close")
       }
     })
-
-    body = document.body
   })
 
   let navIsShowed = ref(true)
@@ -100,6 +106,7 @@ import {computed, onMounted, ref} from "vue";
       body.classList.remove('noscroll')
     } else if (mode === "full") {
       navIsShowed.value = true
+      // headerIsFixed.value = false
       body.classList.remove('noscroll')
     }else {
       navIsShowed.value = !navIsShowed.value
@@ -108,7 +115,7 @@ import {computed, onMounted, ref} from "vue";
   }
 
   const headerIsFixed = computed(() => {
-    return navIsShowed.value || scrollY.value > 900
+    return scrollY.value > 900
   })
 </script>
 

@@ -122,6 +122,7 @@
         <swiper
           :slides-per-view="2.5"
           :space-between="90"
+          :breakpoints="reviewsSliderBreakpoints"
         >
           <swiper-slide v-for="item in reviews">
             <app-review :user="item.user" :date="item.date">
@@ -240,6 +241,26 @@ let benefitsSliderBreakpoints = {
   }
 }
 
+let reviewsSliderBreakpoints = {
+  0: {
+    slidesPerView: 1,
+  },
+  576: {
+    slidesPerView: 1,
+    spaceBetween: 30
+  },
+  768: {
+    slidesPerView: 1.5
+  },
+  992: {
+    slidesPerView: 2
+  },
+  1200: {
+    slidesPerView: 2.5,
+    spaceBetween: 90
+  }
+}
+
 let cleaningSwiper = ref({})
 
 let ourServices = [
@@ -333,16 +354,11 @@ let appeal = reactive({
 </script>
 
 <style scoped>
-section {
-  padding: 80px 0;
-}
-
 .intro {
   padding-top: 0;
 }
 
 .professional-washing {
-  padding: 90px 0 80px;
   background: var(--background-color);
 }
 
@@ -371,6 +387,22 @@ section {
   margin-top: 50px;
 }
 
+@media (max-width: 768px) {
+  .professional-washing .inner {
+    flex-direction: column;
+    gap: 50px;
+    order: 2;
+  }
+
+  .professional-washing .content {
+    width: auto;
+  }
+
+  .professional-washing .image {
+    display: none;
+  }
+}
+
 .about-us .inner {
   display: flex;
   align-items: center;
@@ -395,6 +427,12 @@ section {
   height: 39px;
   background-image: url("../assets/icons/q.png");
   z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .about-us .inner {
+    flex-direction: column-reverse;
+  }
 }
 
 .our-services .inner {
@@ -447,6 +485,27 @@ section {
   gap: 10px;
 }
 
+@media (max-width: 992px) {
+  .cleaning-services .inner {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cleaning-services .inner {
+    flex-direction: column;
+  }
+
+  .cleaning-services .content {
+    width: auto;
+  }
+
+  .cleaning-services img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .our-benefits :deep(.card) {
   padding: 30px 45px;
 }
@@ -460,9 +519,30 @@ section {
   margin-bottom: 80px;
 }
 
+@media (max-width: 576px) {
+  .reviews .title {
+    margin-bottom: 40px;
+  }
+}
+
 .contact-us .inner{
   display: flex;
-  gap: 100px;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.contact-us .content {
+  width: 50%;
+}
+
+.contact-us .map {
+  display: flex;
+  align-items: center;
+}
+
+.contact-us .map img {
+  width: 100%;
+  height: auto;
 }
 
 .contact-form {
@@ -482,5 +562,15 @@ section {
 
 .contact-button {
   flex-grow: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-us .inner {
+    flex-direction: column-reverse;
+  }
+
+  .contact-us .content {
+    width: auto;
+  }
 }
 </style>

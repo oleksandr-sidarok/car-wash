@@ -95,6 +95,7 @@ a {
 .inner {
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 }
 
 .company-info {
@@ -128,5 +129,33 @@ a {
 
 .email a {
   color: white;
+}
+
+@media (max-width: 1200px) {
+  .inner {
+    flex-wrap: wrap;
+  }
+
+  .contacts {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .company-info {
+    margin-bottom: 30px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+  }
 }
 </style>

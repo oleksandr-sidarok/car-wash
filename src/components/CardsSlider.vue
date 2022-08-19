@@ -90,4 +90,10 @@ const props = defineProps({
 :deep(.swiper-button-disabled) {
   opacity: 0.5;
 }
+
+@media (max-width: 576px) {
+  .prev, .next {
+    display: none;
+  }
+}
 </style>

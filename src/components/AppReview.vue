@@ -1,6 +1,6 @@
 <template>
   <div class="review">
-    <h3>
+    <h3 class="title">
       <slot name="title"></slot>
     </h3>
     <div class="text">
@@ -40,8 +40,13 @@ const props = defineProps({
     flex-direction: column;
   }
 
+  .title {
+    height: 52px;
+    margin-bottom: 10px;
+  }
+
   .text {
-    height: 135px;
+    height: 160px;
     overflow: auto;
     margin-bottom: 60px;
   }
@@ -84,5 +89,11 @@ const props = defineProps({
   .date {
     color: white;
     font-weight: 400;
+  }
+
+  @media (max-width: 992px) {
+    .text {
+      height: 135px;
+    }
   }
 </style>
