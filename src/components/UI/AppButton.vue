@@ -2,7 +2,7 @@
   <button class="button" :class="props.decoration" v-if="props.type === 'button' || props.type === 'submit'" :type="props.type">
     <slot />
   </button>
-  <a :href="`${linkType}${link}`" class="button" v-else>
+  <a :href="`${linkType}${link}`" class="button" :class="props.decoration" v-else>
     <slot />
   </a>
 </template>
@@ -47,5 +47,11 @@ let linkType = computed(() => {
     background: transparent;
     border: 1px solid #ffffff;
     opacity: 0.8;
+  }
+
+  .disabled {
+    background: transparent;
+    border: 1px solid #ffffff;
+    opacity: 0.5;
   }
 </style>

@@ -38,6 +38,7 @@ import SocialWidget from "../components/SocialWidget.vue"
   display: flex;
   align-items: center;
   z-index: 3;
+  background: red;
 }
 
 .intro::before {
@@ -109,6 +110,7 @@ import SocialWidget from "../components/SocialWidget.vue"
 
   .title {
     font-size: 60px;
+    margin-bottom: 20px;
   }
 
   .title span {
@@ -122,6 +124,12 @@ import SocialWidget from "../components/SocialWidget.vue"
 
   .description {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .title {
+    font-size: 48px;
   }
 }
 </style>
