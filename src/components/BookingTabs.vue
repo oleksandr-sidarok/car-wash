@@ -42,6 +42,10 @@ const selectHandler = (step) => {
 .tabs-list {
   display: flex;
   gap: 40px;
+  max-width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+  padding-bottom: 14px;
 }
 
 .tabs-item {

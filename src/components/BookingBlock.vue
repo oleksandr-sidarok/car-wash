@@ -9,17 +9,19 @@
 import BookingTabs from "./BookingTabs.vue"
 import {computed, defineAsyncComponent, ref} from "vue"
 
-const BookingCar = defineAsyncComponent(() => {
-  return import("./BookingCar.vue")
+const BookingCarSelect = defineAsyncComponent(() => {
+  return import("./BookingCarSelect.vue")
+})
+const BookingWashingPlan = defineAsyncComponent(() => {
+  return import("./BookingWashingPlan.vue")
 })
 
 let currentStep = ref(1)
 
 const currentComponent = computed(() => {
-  console.log(currentStep)
   switch (currentStep.value) {
-    case 1: return BookingCar
-    case 2: return BookingCar
+    case 1: return BookingCarSelect
+    case 2: return BookingWashingPlan
   }
 
   return null

@@ -4,9 +4,9 @@
         slides-per-view="1"
         :modules="swiperModules"
         :navigation="{nextEl: '#car-next', prevEl: '#car-prev'}"
+        :pagination="pagination"
         @slideChange="slideChangeHandler"
     >
-<!--   https://codesandbox.io/s/laughing-violet-o8mrdf?file=/src/App.vue   -->
       <swiper-slide>
         <div class="image">
           <img src="../assets/img/sedan.png" alt="sedan">
@@ -33,17 +33,29 @@
   </div>
 </template>
 
-<!-- Pagination -->
-<!-- https://codesandbox.io/s/ffmygy?file=/src/App.vue -->
-
 <script setup>
-import {Navigation} from "swiper"
+import {Navigation, Pagination} from "swiper"
 import {Swiper, SwiperSlide} from "swiper/vue";
-const swiperModules = [Navigation]
+const swiperModules = [Navigation, Pagination]
 import "swiper/css";
 import 'swiper/css/scrollbar';
 import AppButton from "./UI/AppButton.vue"
 import {ref} from "vue";
+
+// Pagination
+const pagination = {
+  clickable: true,
+  renderBullet: function (index, className) {
+    return '<span class="' + className + '">' + Cars[index] + '</span>';
+  },
+}
+
+const Cars = [
+  "Sedan",
+  "SUV",
+  "Pick Up",
+  "Mini Bus"
+]
 
 let currentSlide = ref(0)
 let isEnd = ref(false)
@@ -59,7 +71,7 @@ const slideChangeHandler = (swiper) => {
 <style scoped>
 .booking-car {
   position: relative;
-  padding: 80px 0;
+  padding: 40px 0;
 }
 
 #car-next, #car-prev {
@@ -80,5 +92,58 @@ const slideChangeHandler = (swiper) => {
 .image {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.image img {
+  width: 75%;
+}
+
+:deep(.swiper-pagination) {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 80px;
+}
+
+:deep(.swiper-pagination-bullet) {
+  user-select: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+:deep(.swiper-pagination-bullet-active) {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  #car-next, #car-prev {
+    display: none;
+  }
+
+  .image img {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  :deep(.swiper-pagination) {
+    gap: 30px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  :deep(.swiper-pagination) {
+    gap: 8px;
+  }
+
+  :deep(.swiper-pagination-bullet) {
+    font-size: 16px;
+  }
 }
 </style>
