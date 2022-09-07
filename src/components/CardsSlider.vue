@@ -14,6 +14,9 @@
             :content="props.content"
             :icon="item.icon"
             :stars="props.stars"
+            :button="item.button"
+            :selected="booking.services.has(item.title)"
+            @button-click="cardSelectHandler(item.title)"
         />
       </swiper-slide>
     </swiper>
@@ -38,6 +41,9 @@ const swiperModules = [Navigation]
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
+import {useBookingStore} from "../store/booking.js";
+
+const booking = useBookingStore()
 
 const props = defineProps({
   items: {
@@ -46,7 +52,7 @@ const props = defineProps({
   },
   content: {
     type: String,
-    required: false
+    default: 'center'
   },
   stars: {
     type: Boolean,
@@ -59,8 +65,16 @@ const props = defineProps({
   breakpoints: {
     type: Object,
     default: {}
-  }
+  },
 })
+
+const cardSelectHandler = (cardName) => {
+  if(booking.services.has(cardName)) {
+    booking.services.delete(cardName)
+  } else {
+    booking.services.add(cardName)
+  }
+}
 </script>
 
 <style scoped>

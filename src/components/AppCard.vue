@@ -1,17 +1,22 @@
 <template>
   <div class="card">
-    <img width="120" height="120" :src="props.icon" alt="icon" class="icon">
+    <img width="120" height="120" :src="icon" alt="icon" class="icon">
     <h3 class="title">{{props.title}}</h3>
     <div class="description">
-      <p>{{props.description}}</p>
+      <p>{{description}}</p>
     </div>
     <app-stars v-if="props.stars" :value="4" />
+    <app-button class="button" :class="{selected}" v-if="props.button" @click="$emit('button-click')">
+      <img v-if="buttonType === 'image'" :src="button" width="30">
+      <span v-else>{{button}}</span>
+    </app-button>
   </div>
 </template>
 
 <script setup>
-import {defineProps} from "vue";
+import AppButton from "./UI/AppButton.vue"
 import AppStars from "./AppStars.vue"
+import {computed} from "vue";
 
 const props = defineProps({
   title: {
@@ -33,6 +38,24 @@ const props = defineProps({
   stars: {
     type: Boolean,
     default: false
+  },
+  button: {
+    type: [String, URL],
+    default: null
+  },
+  selected: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const buttonType = computed(() => {
+  if (props.button instanceof URL) { // is not true
+    console.log("isURL")
+    return "image"
+  } else {
+    console.log(props.button)
+    return "text"
   }
 })
 </script>
@@ -71,6 +94,20 @@ const props = defineProps({
   background: linear-gradient(126.6deg, rgba(255, 255, 255, 0.12) 28.69%, rgba(255, 255, 255, 0) 100%);
   backdrop-filter: blur(140px);
   -webkit-backdrop-filter: blur(140px);
+}
+
+.button {
+  position: relative;
+  padding: 15px;
+  background: linear-gradient(126.6deg, rgba(255, 255, 255, 0.12) 29.69%, rgba(255, 255, 255, 0) 100%);
+}
+
+.button img {
+  display: block;
+}
+
+.button.selected {
+  background: var(--accent-color);
 }
 
 @media (max-width: 576px) {
